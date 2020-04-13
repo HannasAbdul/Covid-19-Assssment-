@@ -32,10 +32,10 @@ const covid19ImpactEstimator = (data) => {
     }
     return multiplier;
   };
-  const times = (2 ** factor);
+  const times = (2 ** factor());
   output.impact.currentlyInfected = input.reportedCases * 10;
   output.severeImpact.currentlyInfected = input.reportedCases * 50;
-  output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** factor);
+  output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** factor());
   output.severeImpact.infectionsByRequestedTime = output.severeImpact.currentlyInfected * times;
 };
 export default covid19ImpactEstimator;
