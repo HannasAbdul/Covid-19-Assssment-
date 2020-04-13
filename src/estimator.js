@@ -20,17 +20,15 @@ const covid19ImpactEstimator = (data) => {
   // Challenge 1
   const factor = () => {
     let multiplier;
-    const periodTypeInLowerCase = data.periodType.toLowerCase;
-    if (periodTypeInLowerCase === 'days') {
-      multiplier = Math.floor((input.timeToElapse * 1) / 3);
-    } else if (periodTypeInLowerCase === 'weeks') {
-      multiplier = Math.floor((input.timeToElapse * 7) / 3);
-    } else if (periodTypeInLowerCase === 'months') {
-      multiplier = Math.floor((data.timeToElapse * 30) / 3);
-    } else {
+    const convertedPeriodType = input.periodType.toLowerCase();
+    if (convertedPeriodType === 'days') {
       multiplier = 1;
+    } else if (convertedPeriodType === 'weeks') {
+      multiplier = 7;
+    } else if (convertedPeriodType === 'month') {
+      multiplier = 30;
     }
-    return multiplier;
+    return Math.floor((multiplier * input.timeToElapse) / 3);
   };
   const times = (2 ** factor());
   output.impact.currentlyInfected = input.reportedCases * 10;
