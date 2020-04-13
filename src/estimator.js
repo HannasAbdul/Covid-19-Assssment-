@@ -16,11 +16,11 @@ const factor = () => {
   } else if (convertedPeriodType === 'months') {
     multiplier = 30;
   }
-  return Math.floor((multiplier * timeToElapse) / 3);
+  return Math.floor((multiplier * data.timeToElapse) / 3);
 };
 
 
-const covid19ImpactEstimator = (data) => ({
+const covid19ImpactEstimator = () => ({
   data,
   impact: {
     currentlyInfected: data.reportedCases * 10,
